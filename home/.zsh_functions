@@ -1,0 +1,46 @@
+#!/bin/bash
+
+function docker_cleanup(){
+    docker kill $(docker ps -q)
+    docker rm $(docker ps -a -q)
+    docker volume rm $(docker volume ls -f dangling=true -q)
+    docker rmi $(docker images -q -f dangling=true)
+}
+
+
+# replaces all line breaks with \n single line
+# good for squashing an SSL sert into a single line
+function cat_single(){
+	if [ $# -eq 0 ]
+	then
+		echo "No arguments supplied"
+		return 1
+	fi
+
+	if [ -z "$1" ]
+	then
+		echo "Invalid Arg"
+		return 1
+	fi
+
+	awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' $1
+	return 0
+}
+
+# replaces ugly /n with pretty new lines
+# good for debugging shitty stdout/sterr
+function pretty_new_lines(){
+	if [ $# -eq 0 ]
+	then
+		echo "No arguments supplied"
+		return 1
+	fi
+
+	if [ -z "$1" ]
+	then
+		echo "Invalid Arg"
+		return 1
+	fi
+	awk '{gsub(/\\n/,"\n")}1' $1
+	return 0
+}

@@ -1,0 +1,21 @@
+[push]
+	default = simple
+[user]
+	name = Troy Sampson
+	email = troy.j.sampson@gmail.com
+[mergetool]
+	prompt = true
+[difftool]
+	prompt = true
+[alias]
+	co = checkout
+	br = branch
+	st = status
+	bra = branch -a
+	cmam = commit -am
+[core]
+	editor = /usr/bin/vim
+	excludesfile = ~/.gitignore_global
+[commit]
+	template = ~/.gitmessage
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Application 
+alias tf='terraform'
+alias dc='docker-compose'
+
+# Google Cloud (gcloud) gce
+alias gce-list='gcloud config configurations list'
+
+# Networking 
+alias watch-ip='watch -d -n 2 -d sudo nmap -Pn -p'
+alias show-open='sudo nmap --open -Pn'
