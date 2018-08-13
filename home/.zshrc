@@ -5,7 +5,7 @@ ZSH_THEME="geoffgarside"
 export TERM="xterm-256color"
 export GOROOT=/usr/local/go
 export GOPATH="$HOME/code/go"
-export PATH="$GOPATH/bin:$GOROOT/bin:/usr/local/opt/python@2/libexec/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH:$HOME/.bin"
+export PATH="$GOPATH/bin:$GOROOT/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH:$HOME/.bin"
 export KUBECONFIG="$HOME/.kube/admin.conf"
 export NVM_DIR="/Users/tsampson/.nvm"
 
