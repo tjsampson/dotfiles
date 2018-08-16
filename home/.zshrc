@@ -17,5 +17,5 @@ if [ -f "$HOME/.tnsrc" ]; then source "$HOME/.tnsrc"; fi
 if [ -f "$HOME/.google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/.google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "$HOME/.google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/.google-cloud-sdk/completion.zsh.inc"; fi
 if [ -f "$HOME/.google-cloud-sdk/bin/kubectl" ]; then source <(kubectl completion zsh); fi
-if [ -f "$HOME/.zsh_aliases"]; then source "$HOME/.zsh_aliases"; fi
-if [ -f "$HOME/.zsh_functions"]; then source "$HOME/.zsh_functions"; fi
+if [ -f "$HOME/.zsh_aliases" ]; then source "$HOME/.zsh_aliases"; fi
+if [ -f "$HOME/.zsh_functions" ]; then source "$HOME/.zsh_functions"; fi

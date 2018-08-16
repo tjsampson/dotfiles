@@ -47,6 +47,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'jamessan/vim-gnupg'
 Plug 'posva/vim-vue'
+Plug 'janko-m/vim-test'
 
 
 let g:make = 'gmake'
