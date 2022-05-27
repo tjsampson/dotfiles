@@ -7,10 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 message="$1"
-password=$(
-	date +%s | sha256sum | base64 | head -c 9
-	echo
-)
+password=$(pwgen 32 1)
 data=$(echo "$message" | openssl enc -e -aes-256-cbc -k "$password" -a -md md5)
 
 note_link=$(curl -s 'https://privnote.com/' \
