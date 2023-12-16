@@ -1,12 +1,20 @@
 #!/bin/bash
 
-# Application 
-alias tf='terraform'
-alias dc='docker-compose'
+# Application
+#alias tf='terraform'
+alias dc='docker compose'
 
 # Google Cloud (gcloud) gce
 alias gce-list='gcloud config configurations list'
 
-# Networking 
+# Networking
 alias watch-ip='watch -d -n 2 -d sudo nmap -Pn -p'
 alias show-open='sudo nmap --open -Pn'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+
+
+alias kube="/usr/local/bin/kubectl"
+alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'  | pbcopy && pbpaste && echo"
