@@ -1,5 +1,15 @@
 #!/bin/bash
 
+function ssh-agent-add(){
+	eval `ssh-agent -s`
+	ssh-add
+}
+
+function k8s-remove-terminated-pods(){
+	ns=$1
+	kubectl -n "$ns" delete pods `kubectl -n "$ns" get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' --field-selector=status.phase!=Running` --grace-period=0 --force
+}
+
 function docker_cleanup(){
     docker kill $(docker ps -q)
     docker rm $(docker ps -a -q)
