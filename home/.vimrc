@@ -48,6 +48,11 @@ Plug 'avelino/vim-bootstrap-updater'
 Plug 'jamessan/vim-gnupg'
 Plug 'posva/vim-vue'
 Plug 'janko-m/vim-test'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'hashivim/vim-terraform'
+Plug 'vimwiki/vimwiki'
+Plug 'mileszs/ack.vim'
 
 
 let g:make = 'gmake'
@@ -169,7 +174,7 @@ else
 
   " IndentLine
   let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
+  let g:indentLine_concealcursor = 'nc'
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
@@ -190,7 +195,7 @@ endif
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
-set scrolloff=3
+set scrolloff=10
 
 "" Status bar
 set laststatus=2
@@ -220,7 +225,7 @@ let g:airline_skip_empty_sections = 1
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
-"" no one is really happy until you have this shortcuts
+"" no one is really happy until you have these shortcuts
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -594,3 +599,53 @@ nmap <leader>y "+yE
 
 "Yank selection to system clipboard in visual mode
 vmap <leader>y "+y
+
+
+"FZF Search Options
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
+nmap <silent> <C-T> :Files<CR>
+nmap <silent> <C-P> :Files<CR>
+let g:fzf_colors =
+\ { 'fg':         ['fg', 'Normal'],
+  \ 'bg':         ['bg', 'Normal'],
+  \ 'preview-bg': ['bg', 'NormalFloat'],
+  \ 'hl':         ['fg', 'Comment'],
+  \ 'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':        ['fg', 'Statement'],
+  \ 'info':       ['fg', 'PreProc'],
+  \ 'border':     ['fg', 'Ignore'],
+  \ 'prompt':     ['fg', 'Conditional'],
+  \ 'pointer':    ['fg', 'Exception'],
+  \ 'marker':     ['fg', 'Keyword'],
+  \ 'spinner':    ['fg', 'Label'],
+  \ 'header':     ['fg', 'Comment'] }
+
+" ack.vim --- {{{
+
+" Use ripgrep for searching ⚡️
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+
+" Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+
+" Don't jump to first match
+cnoreabbrev Ack Ack!
+
+" Maps <leader>/ so we're ready to type the search keyword
+nnoremap <Leader>/ :Ack!<Space>
+" }}}
+
+" Navigate quickfix list with ease
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+
+
